@@ -9,7 +9,7 @@ include(compiler_options)
 add_library(chess_score_calculator_library STATIC
     "include/chess_score_calculator/chessboard.hpp"
     "include/chess_score_calculator/enums.hpp"
-    "include/chess_score_calculator/piece.hpp"
+    "src/piece.cpp" "include/chess_score_calculator/piece.hpp"
     "src/tile.cpp" "include/chess_score_calculator/tile.hpp"
 )
 target_include_directories(chess_score_calculator_library PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
