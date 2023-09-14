@@ -7,7 +7,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${cmake_DIR})
 include(compiler_options)
 
 add_library(chess_score_calculator_library STATIC
-    "include/chess_score_calculator/chessboard.hpp"
+    "src/chessboard.cpp" "include/chess_score_calculator/chessboard.hpp"
     "include/chess_score_calculator/enums.hpp"
     "src/piece.cpp" "include/chess_score_calculator/piece.hpp"
     "src/tile.cpp" "include/chess_score_calculator/tile.hpp"
