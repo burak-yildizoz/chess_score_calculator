@@ -126,7 +126,7 @@ namespace chess {
 Chessboard::Chessboard(const std::filesystem::path& board_file)
 {
     // check if file exists
-    if (!std::filesystem::exists(board_file)) {
+    if (!std::filesystem::is_regular_file(board_file)) {
         throw std::runtime_error("File not found: " + board_file.string());
     }
     // open file by exceptions enabled

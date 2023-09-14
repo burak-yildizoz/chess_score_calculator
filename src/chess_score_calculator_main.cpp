@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iterator>
 #include <ranges>
+#include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -53,12 +54,16 @@ try {
         filename_column_width = std::max(filename_column_width, filename.length());
     }
     // write out in table format
-    std::ofstream ofs("result.txt");
-    std::format_to(std::ostream_iterator<char>(ofs), "| {:{}} | White | Black |\n", filename_header, filename_column_width);
-    ofs << "| " << std::string(filename_column_width, '-') << " | ----- | ----- |\n";
+    std::ostringstream oss;
+    std::format_to(std::ostream_iterator<char>(oss), "| {:{}} | White | Black |\n", filename_header, filename_column_width);
+    oss << "| " << std::string(filename_column_width, '-') << " | ----- | ----- |\n";
     for (int i = 0; i < num_boards; i++) {
-        std::format_to(std::ostream_iterator<char>(ofs), "| {:{}} | {:<5} | {:<5} |\n", filenames.at(i), filename_column_width, white_scores.at(i), black_scores.at(i));
+        std::format_to(std::ostream_iterator<char>(oss), "| {:{}} | {:<5} | {:<5} |\n", filenames.at(i), filename_column_width, white_scores.at(i), black_scores.at(i));
     }
+    // print to both file and stdout
+    std::cout << oss.str();
+    std::ofstream ofs("result.txt");
+    ofs << oss.rdbuf();
 } catch (const std::exception& e) {
     std::clog << "Exception: " << e.what() << std::endl;
 }
