@@ -8,3 +8,6 @@ if (MSVC)
 else()
     add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 endif()
+
+# Enable folder view in IDE
+set_property(GLOBAL PROPERTY USE_FOLDERS true)
