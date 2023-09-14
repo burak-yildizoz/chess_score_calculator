@@ -6,6 +6,7 @@
   - [Example 1](#example-1)
   - [Example 2](#example-2)
   - [Example 3](#example-3)
+- [Building from source](#building-from-source)
 
 ## Problem statement
 
@@ -156,3 +157,30 @@ Blacks:
 | Queen      | `1 * 4.5`         | `4.5` |
 | King       | `1 * 100`         | `100` |
 | Total      |                   | `108` |
+
+## Building from source
+
+The project is created by C++20 and CMake.
+
+Create `build` folder and set terminal directory to it.
+
+``` bash
+mkdir build
+cd build/
+```
+
+Run the following commands to build the project.
+
+Linux:
+
+``` bash
+cmake ..
+make -j7
+```
+
+Windows:
+
+``` bash
+cmake -T host=x64 -A x64 ..
+cmake --build . --config Release --parallel 7
+```
